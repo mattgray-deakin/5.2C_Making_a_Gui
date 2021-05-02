@@ -25,7 +25,10 @@ window.title("Triple Button LED Toggle")
 the_font = tkinter.font.Font(family='Gentium', size=12, weight="bold")
 
 # Switch Functions
-# Each switch function conducts a simple check to identify the LED state, then does the relevant action
+# Each switch function conducts a simple check to identify the LED state, then does the relevant actions
+
+# For each function, the program will either turn off an led, or turn on the led and turn the others off
+# It will also change the button text in the process
 def red_led_switch():
     if red_led.is_lit:
         red_led.off()
@@ -33,6 +36,12 @@ def red_led_switch():
     else:
         red_led.on()
         red_led_button["text"]="Turn off Red LED"
+        if green_led.is_lit:
+            green_led.off()
+            green_led_button["text"]="Turn on Green LED"
+        if blue_led.is_lit:
+            blue_led.off()
+            blue_led_button["text"]="Turn on Blue LED"
 
 def green_led_switch():
     if green_led.is_lit:
@@ -41,6 +50,12 @@ def green_led_switch():
     else:
         green_led.on()
         green_led_button["text"]="Turn off Green LED"
+        if red_led.is_lit:
+            red_led.off()
+            red_led_button["text"]="Turn on Red LED"
+        if blue_led.is_lit:
+            blue_led.off()
+            blue_led_button["text"]="Turn on Blue LED"
 
 def blue_led_switch():
     if blue_led.is_lit:
@@ -49,6 +64,13 @@ def blue_led_switch():
     else:
         blue_led.on()
         blue_led_button["text"]="Turn off Blue LED"
+        if red_led.is_lit:
+            red_led.off()
+            red_led_button["text"]="Turn on Red LED"
+        if green_led.is_lit:
+            green_led.off()
+            green_led_button["text"]="Turn on Green LED"
+
 
 # Close function to ensure the program finishes cleanly for the GPIO
 def close_program():
